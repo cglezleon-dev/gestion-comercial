@@ -17,40 +17,41 @@ const DB_DOC = "data/main";
 
 // ── Estado inicial (primera vez o si no hay datos en Firebase) ───
 const INIT_TEAM = [
-  { id: 1, name: "Carlos Ruiz",   zone: "Centro", visits: 4, target: 6, status: "active",    lastUpdate: "Hace 20 min" },
-  { id: 2, name: "Laura Méndez", zone: "Norte",  visits: 6, target: 6, status: "completed", lastUpdate: "Hace 1h" },
-  { id: 3, name: "Javi Sola",    zone: "Sur",    visits: 2, target: 6, status: "warning",   lastUpdate: "Hace 3h" },
-  { id: 4, name: "Ana Torres",   zone: "Este",   visits: 5, target: 6, status: "active",    lastUpdate: "Hace 45 min" },
+  { id: 1, name: "David",  zone: "Centro", visits: 4, target: 6, status: "active",    lastUpdate: "Hace 20 min" },
+  { id: 2, name: "Roger",  zone: "Norte",  visits: 6, target: 6, status: "completed", lastUpdate: "Hace 1h" },
+  { id: 3, name: "Marcos", zone: "Sur",    visits: 2, target: 6, status: "warning",   lastUpdate: "Hace 3h" },
+  { id: 4, name: "Carles", zone: "Este",   visits: 5, target: 6, status: "active",    lastUpdate: "Hace 45 min" },
+  { id: 5, name: "Oriol",  zone: "Oeste",  visits: 3, target: 6, status: "active",    lastUpdate: "Hace 1h" },
 ];
 const INIT_OPPS = [
-  { id: 1, name: "Bar El Rincón",     type: "Nuevo cliente", value: "Alto",  agent: "Carlos Ruiz",  status: "pending",  notes: "Interesado en lager y IPA" },
-  { id: 2, name: "Restaurante Bravo", type: "Ampliación",    value: "Medio", agent: "Laura Méndez", status: "followup", notes: "Quiere añadir cervezas artesanas" },
-  { id: 3, name: "Hotel Mirador",     type: "Nuevo cliente", value: "Alto",  agent: "Ana Torres",   status: "pending",  notes: "Evento de verano, 200 barriles" },
-  { id: 4, name: "Terraza Sunset",    type: "Recuperación",  value: "Medio", agent: "Javi Sola",    status: "lost",     notes: "Se fue a competencia, posible vuelta" },
+  { id: 1, name: "Bar El Rincón",     type: "Nuevo cliente", value: "Alto",  agent: "David",  status: "pending",  notes: "Interesado en lager y IPA" },
+  { id: 2, name: "Restaurante Bravo", type: "Ampliación",    value: "Medio", agent: "Roger", status: "followup", notes: "Quiere añadir cervezas artesanas" },
+  { id: 3, name: "Hotel Mirador",     type: "Nuevo cliente", value: "Alto",  agent: "Carles",   status: "pending",  notes: "Evento de verano, 200 barriles" },
+  { id: 4, name: "Terraza Sunset",    type: "Recuperación",  value: "Medio", agent: "Marcos",    status: "lost",     notes: "Se fue a competencia, posible vuelta" },
 ];
 const INIT_TASKS = [
   { id: 1, text: "Revisar rutas de la semana",                    done: false, priority: "high",   agent: "Equipo" },
-  { id: 2, text: "Llamar a Hotel Mirador para confirmar pedido",  done: false, priority: "high",   agent: "Ana Torres" },
+  { id: 2, text: "Llamar a Hotel Mirador para confirmar pedido",  done: false, priority: "high",   agent: "Carles" },
   { id: 3, text: "Enviar catálogo de verano a prospectos",        done: true,  priority: "medium", agent: "Equipo" },
   { id: 4, text: "Reunión semanal — viernes 10h",                 done: false, priority: "medium", agent: "Equipo" },
-  { id: 5, text: "Seguimiento Bar El Rincón",                     done: false, priority: "low",    agent: "Carlos Ruiz" },
+  { id: 5, text: "Seguimiento Bar El Rincón",                     done: false, priority: "low",    agent: "David" },
 ];
 const INIT_HOLIDAYS = [
   { id: 1, person: "Yo (Jefe)",    start: "2026-07-01", end: "2026-07-14", label: "Vacaciones verano" },
-  { id: 2, person: "Carlos Ruiz",  start: "2026-08-01", end: "2026-08-15", label: "Vacaciones agosto" },
-  { id: 3, person: "Laura Méndez", start: "2026-07-15", end: "2026-07-28", label: "Vacaciones verano" },
-  { id: 4, person: "Javi Sola",    start: "2026-06-15", end: "2026-06-22", label: "Vacaciones junio" },
-  { id: 5, person: "Ana Torres",   start: "2026-08-16", end: "2026-08-31", label: "Vacaciones agosto" },
+  { id: 2, person: "David",  start: "2026-08-01", end: "2026-08-15", label: "Vacaciones agosto" },
+  { id: 3, person: "Roger", start: "2026-07-15", end: "2026-07-28", label: "Vacaciones verano" },
+  { id: 4, person: "Marcos",    start: "2026-06-15", end: "2026-06-22", label: "Vacaciones junio" },
+  { id: 5, person: "Carles",   start: "2026-08-16", end: "2026-08-31", label: "Vacaciones agosto" },
 ];
 const INIT_EVENTS = [
-  { id: 1, date: "2026-04-15", title: "Feria Hostelería Madrid",   type: "feria",      notes: "Stand B12. Llevar catálogo nuevo y muestras de la gama artesana. Contacto: Pepe Martínez 612345678.", attendees: "Yo (Jefe), Carlos Ruiz" },
+  { id: 1, date: "2026-04-15", title: "Feria Hostelería Madrid",   type: "feria",      notes: "Stand B12. Llevar catálogo nuevo y muestras de la gama artesana. Contacto: Pepe Martínez 612345678.", attendees: "Yo (Jefe), David" },
   { id: 2, date: "2026-05-10", title: "Lanzamiento IPA Verano",    type: "lanzamiento",notes: "Presentación de la nueva IPA en el almacén. Invitar a los 20 mejores clientes. Catering incluido.", attendees: "Todo el equipo" },
   { id: 3, date: "2026-06-01", title: "Reunión distribuidores",    type: "reunion",    notes: "Negociación precios temporada alta. Revisar márgenes antes. Traer datos de ventas Q1.", attendees: "Yo (Jefe)" },
   { id: 4, date: "2026-09-05", title: "Inicio temporada otoño",    type: "temporada",  notes: "Arranque de campaña otoño-invierno. Nuevas rutas y objetivos de visitas. Reunión de equipo 9h.", attendees: "Todo el equipo" },
 ];
 
-const TEAM_NAMES   = ["Yo (Jefe)", "Carlos Ruiz", "Laura Méndez", "Javi Sola", "Ana Torres"];
-const TEAM_COLORS  = { "Yo (Jefe)":"#f5c87a", "Carlos Ruiz":"#4ade80", "Laura Méndez":"#60a5fa", "Javi Sola":"#fb923c", "Ana Torres":"#e879f9" };
+const TEAM_NAMES   = ["Yo (Jefe)", "David", "Roger", "Marcos", "Carles", "Oriol"];
+const TEAM_COLORS  = { "Yo (Jefe)":"#f5c87a", "David":"#4ade80", "Roger":"#60a5fa", "Marcos":"#fb923c", "Carles":"#e879f9", "Oriol":"#34d399" };
 const EVENT_TYPES  = {
   feria:      { color:"#f5c87a", icon:"🏛️", label:"Feria" },
   lanzamiento:{ color:"#4ade80", icon:"🚀", label:"Lanzamiento" },
@@ -141,7 +142,7 @@ export default function App() {
   const [newOpp, setNewOpp]                 = useState({name:"",type:"Nuevo cliente",value:"Medio",agent:"",notes:""});
 
   // ── Chat IA ──
-  const [messages, setMessages]   = useState([{ role:"assistant", text:"¡Hola! Soy tu asistente comercial 🍺\n\nPuedes decirme cosas como:\n• \"Carlos hizo 2 visitas más\"\n• \"Añade oportunidad: Bar Roma, zona norte\"\n• \"Marca como completada la tarea de rutas\"\n• \"Javi está en warning\"\n\n¿En qué te ayudo?" }]);
+  const [messages, setMessages]   = useState([{ role:"assistant", text:"¡Hola! Soy tu asistente comercial 🍺\n\nPuedes decirme cosas como:\n• \"David hizo 2 visitas más\"\n• \"Añade oportunidad: Bar Roma, zona norte\"\n• \"Marca como completada la tarea de rutas\"\n• \"Marcos está en warning\"\n\n¿En qué te ayudo?" }]);
   const [chatInput, setChatInput] = useState("");
   const [aiLoading, setAiLoading] = useState(false);
   const chatEndRef                = useRef(null);
@@ -434,7 +435,7 @@ Estados equipo: active/completed/warning. Oportunidades: pending/followup/won/lo
                 </div>
               </div>
               <div style={{marginBottom:9}}><div style={{fontSize:10,color:"#806040",marginBottom:3}}>Título</div><input value={newEvent.title} onChange={e=>setNewEvent({...newEvent,title:e.target.value})} placeholder="Ej: Feria Hostelería Barcelona" style={inp}/></div>
-              <div style={{marginBottom:9}}><div style={{fontSize:10,color:"#806040",marginBottom:3}}>Asistentes</div><input value={newEvent.attendees} onChange={e=>setNewEvent({...newEvent,attendees:e.target.value})} placeholder="Ej: Yo, Carlos Ruiz…" style={inp}/></div>
+              <div style={{marginBottom:9}}><div style={{fontSize:10,color:"#806040",marginBottom:3}}>Asistentes</div><input value={newEvent.attendees} onChange={e=>setNewEvent({...newEvent,attendees:e.target.value})} placeholder="Ej: Yo, David…" style={inp}/></div>
               <div style={{marginBottom:12}}><div style={{fontSize:10,color:"#806040",marginBottom:3}}>Notas e información relevante</div><textarea value={newEvent.notes} onChange={e=>setNewEvent({...newEvent,notes:e.target.value})} placeholder="Ubicación, contactos, objetivos…" rows={3} style={{...inp,resize:"vertical",lineHeight:1.6}}/></div>
               <button onClick={addEvent} style={btn({width:"100%",background:"linear-gradient(135deg,#c87c2a,#8b4513)",color:"#fff",fontWeight:"bold"})}>Guardar evento</button>
             </div>
@@ -594,7 +595,7 @@ Estados equipo: active/completed/warning. Oportunidades: pending/followup/won/lo
         {tab==="Asistente IA" && (
           <div style={{display:"flex",flexDirection:"column",height:"calc(100vh - 170px)"}}>
             <div style={{background:"#1a0e04",border:"1px solid #c87c2a33",borderRadius:10,padding:"8px 12px",marginBottom:11,fontSize:11,color:"#a07040",lineHeight:1.7}}>
-              💬 Dime en lenguaje natural qué actualizar. Ej: <span style={{color:"#f5c87a"}}>"Carlos hizo 2 visitas más"</span> · <span style={{color:"#f5c87a"}}>"Añade oportunidad: Bar Roma"</span>
+              💬 Dime en lenguaje natural qué actualizar. Ej: <span style={{color:"#f5c87a"}}>"David hizo 2 visitas más"</span> · <span style={{color:"#f5c87a"}}>"Añade oportunidad: Bar Roma"</span>
             </div>
             <div style={{flex:1,overflowY:"auto",paddingRight:2,marginBottom:10}}>
               {messages.map((m,i)=>(
